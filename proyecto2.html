@@ -6,9 +6,31 @@
     <title>P2</title>
 </head>
 <body>
-    <p></p>
-    <input type="range" min="0" max="100">
-    <p></p>
-    <input type="range" min="0" max="100">    
+    <p>Valor del primer rango: <span id="value1">0</span></p>
+    <input type="range" id="range1" min="0" max="100" value="0" oninput="updateValues()">
+    
+    <p>Valor del segundo rango: <span id="value2">0</span></p>
+    <input type="range" id="range2" min="0" max="100" value="0" oninput="updateValues()">    
+
+    <p>Resultados: <span id="result">Suma: 0, Resta: 0, Multiplicación: 0, División: 0</span></p>
+
+    <script>
+        function updateValues() {
+            const val1 = parseInt(document.getElementById('range1').value);
+            const val2 = parseInt(document.getElementById('range2').value);
+
+            document.getElementById('value1').textContent = val1;
+            document.getElementById('value2').textContent = val2;
+
+            const sum = val1 + val2;
+            const diff = val1 - val2;
+            const prod = val1 * val2;
+            const div = val2 !== 0 ? (val1 / val2).toFixed(2) : 'Indefinido';
+
+            document.getElementById('result').textContent = `Suma: ${sum}, Resta: ${diff}, Multiplicación: ${prod}, División: ${div}`;
+        }
+
+        updateValues();
+    </script>
 </body>
 </html>

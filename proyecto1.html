@@ -4,10 +4,53 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>P1</title>
+    <style>
+        p {
+            font-size: 2rem;
+            font-weight: bold;
+            text-align: center;
+            margin-top: 20px;
+        }
+    </style>
 </head>
 <body>
-    <p></p>
-    <button>+</button>
-    <button>-</button>
+    <p id="marcador">5</p>
+    <button id="incrementar">+</button>
+    <button id="decrementar">-</button>
+
+    <script>
+        let marcador = 5;
+        const marcadorElemento = document.getElementById('marcador');
+        const botonIncrementar = document.getElementById('incrementar');
+        const botonDecrementar = document.getElementById('decrementar');
+
+        function actualizarMarcador() {
+            marcadorElemento.textContent = marcador;
+
+            if (marcador < 5) {
+                marcadorElemento.style.color = 'green';
+            } else if (marcador >= 5 && marcador <= 7) {
+                marcadorElemento.style.color = 'yellow';
+            } else {
+                marcadorElemento.style.color = 'red';
+            }
+        }
+
+        botonIncrementar.addEventListener('click', () => {
+            if (marcador < 10) {
+                marcador++;
+                actualizarMarcador();
+            }
+        });
+
+        botonDecrementar.addEventListener('click', () => {
+            if (marcador > 0) {
+                marcador--;
+                actualizarMarcador();
+            }
+        });
+
+        actualizarMarcador();
+    </script>
 </body>
 </html>
